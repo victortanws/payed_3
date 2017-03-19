@@ -30,6 +30,14 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :initiators,
+             :through => :creditordebitors,
+             :source => :initiator
+
+  has_many   :other_ids,
+             :through => :payments,
+             :source => :other_id
+
   # Validations
 
   # Include default devise modules. Others available are:
