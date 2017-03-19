@@ -5,4 +5,6 @@ class PaymentInformation < ApplicationRecord
 
   # Validations
 
+  validates :card_number, :numericality => true
+
 end
