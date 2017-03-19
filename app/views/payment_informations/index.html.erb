@@ -23,7 +23,13 @@
         <td><%= payment_information.card_number %></td>
         <td><%= payment_information.card_type %></td>
         <td><%= payment_information.cvv %></td>
-        <td><%= payment_information.user.email %></td>
+        <td>
+          <% if payment_information.user.present? %>
+            <a href="/users/<%= payment_information.user.id %>">
+              <%= payment_information.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/payment_informations/<%= payment_information.id %>" class="btn btn-primary">Show</a>
           
