@@ -24,8 +24,11 @@
         <td><%= payment.amount_paid %></td>
         <td>
           <a href="/payments/<%= payment.id %>" class="btn btn-primary">Show</a>
-          <a href="/payments/<%= payment.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_payment/<%= payment.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == payment.initiator %>
+            <a href="/payments/<%= payment.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_payment/<%= payment.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
