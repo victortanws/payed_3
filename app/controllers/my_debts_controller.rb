@@ -1,4 +1,14 @@
 class MyDebtsController < ApplicationController
+  before_action :current_user_must_be_my_debt_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_my_debt_user
+    my_debt = MyDebt.find(params[:id])
+
+    unless current_user == my_debt.initiator
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @my_debts = MyDebt.all
 
